@@ -16,10 +16,12 @@ Destin Basic WordPress Theme, Copyright 2016 c.bavota
 Destin Basic is distributed under the terms of the GNU GPL
 */
 /*! normalize.css v3.0.2 | MIT License | git.io/normalize */
+
 html {
   font-family: sans-serif;
   -ms-text-size-adjust: 100%;
-  -webkit-text-size-adjust: 100%; }
+  -webkit-text-size-adjust: 100%; 
+ }
 
 body {
   margin: 0; }

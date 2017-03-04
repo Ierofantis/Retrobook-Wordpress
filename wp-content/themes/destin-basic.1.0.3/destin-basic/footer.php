@@ -9,20 +9,7 @@
 ?>
 		</main><!-- main -->
 
-		<footer id="footer" role="contentinfo">
-			<div id="footer-content" class="container">
-				<div class="row">
-					<div class="copyright col-lg-12">
-						<p class="pull-left"><?php printf( __( 'Copyright &copy; %s <a href="%s">%s</a>. All Rights Reserved.', 'destin-basic' ), date( 'Y' ), home_url(), get_bloginfo( 'name' ) ); ?></p>
-						<p class="pull-right">
-							<?php printf( __( 'The Retro Theme by Theodore P.', 'destin-basic' ), BAVOTASAN_THEME_NAME, '<a href="https://themes.bavotasan.com/themes/destin-wordpress-themes/">bavotasan.com</a>' ); ?>
-						</p>
-					</div><!-- .col-lg-12 -->
-				</div><!-- .row -->
-			</div><!-- #footer-content.container -->
-		</footer><!-- #footer -->
-
-	</div><!-- #page -->
+	
 
 <?php wp_footer(); ?>
 </body>

@@ -18,12 +18,14 @@ define( 'BAVOTASAN_THEME_NAME', $bavotasan_theme_data->Name );
 require( BAVOTASAN_THEME_TEMPLATE . '/library/customizer.php' ); // Functions for theme options page
 require( BAVOTASAN_THEME_TEMPLATE . '/library/about.php' ); // Functions for how to
 require( BAVOTASAN_THEME_TEMPLATE . '/library/preview-pro.php' ); // Functions for upgrade
-
+ 
 /**
  * Prepare the content width
  *
  * @since 1.0.3
  */
+
+
 function bavotasan_content_width() {
 	$bavotasan_theme_options = bavotasan_theme_options();
 	$bavotasan_array_content = array( 'col-md-2' => .1666, 'col-md-3' => .25, 'col-md-4' => .3333, 'col-md-5' => .4166, 'col-md-6' => .5, 'col-md-7' => .5833, 'col-md-8' => .6666, 'col-md-9' => .75, 'col-md-10' => .8333, 'col-md-12' => 1 );
@@ -60,6 +62,7 @@ function bavotasan_setup() {
 
 	// This theme styles the visual editor with editor-style.css to match the theme style.
 	add_editor_style( 'library/css/admin/editor-style.css' );
+
 
 	// This theme uses wp_nav_menu() in two location.
 	register_nav_menu( 'primary', __( 'Primary Menu', 'destin-basic' ) );
@@ -99,34 +102,79 @@ function bavotasan_setup() {
 	add_theme_support( 'woocommerce' );
 }
 endif; // bavotasan_setup
-
+function adding_front_style() {
+    if( is_front_page() ) {
+        wp_enqueue_style( 'front', get_template_directory_uri().'/library/css/intro/retro.css');
+    } else {
+        //some code
+    }
+}
+add_action('wp_enqueue_scripts','adding_front_style');
 function bavotasan_front_page_render() {
 	global $wp_query, $paged;
 	?>
-	<?php while ( have_posts() ) : the_post(); ?>
-		<?php if ( is_front_page() ) { ?>
-		<div class="item item-<?php the_ID(); ?>">
-			<figure class="effect-julia">
-				<?php
-				if ( has_post_thumbnail() )
-					the_post_thumbnail( 'home' );
-				else
-					echo '<img src="' . BAVOTASAN_THEME_URL . '/library/images/no-image.jpg" alt="" />';
-				?>
-				<figcaption>
-					<h2><?php the_title(); ?></h2>
-					<div>
-						<p><?php echo wp_trim_words( strip_shortcodes( get_the_excerpt() ) , 10 ); ?></p>
-						<p class="more-link-p"><?php _e( 'Continue reading <span class="meta-nav">&rarr;</span>', 'destin-basic' ); ?></p>
-					</div>
-					<a href="<?php the_permalink(); ?>"><?php _e( 'View more', 'destin-basic' ); ?></a>
-				</figcaption>
-			</figure>
-		</div>
-		<?php } else { ?>
-			<?php get_template_part( 'content', get_post_format() ); ?>
-		<?php } ?>
-	<?php endwhile; ?>
+	
+	<div class="container">
+    <div class="component">
+      <ul class="align">
+        <li>
+          <figure class='book'>
+
+            <!-- Front -->
+
+            <div class='hardcover_front'>
+              <li>
+                <div class="coverDesign blue">
+                  <h1>Retrobook</h1>
+                  <p>Signup</p>
+                  <p>or</p>
+                  <p>Login</p>
+                </div>
+              </li>
+              <li></li>
+            </div>
+
+            <!-- Pages -->
+
+            <ul class='page'>
+              <li></li>
+              <li>          
+                <a class="btn1 fancybox fancybox.iframe"  href="/social/register/">Signup</a> 
+                
+                <p><a class="btn3" href="/social/activity/">Enter</a></p>   
+                <p><a class="btn2 fancybox fancybox.iframe"  href="/social/login">Login</a>
+                </p>
+              </li>
+              <li></li>
+              <li></li>
+              <li></li>
+            </ul>
+
+            <!-- Back -->
+
+            <ul class='hardcover_back'>
+              <li></li>
+              <li></li>
+            </ul>
+            <ul class='book_spine'>
+              <li></li>
+              <li></li>
+            </ul>
+            <figcaption>
+              <h1></h1>
+              <span></span>
+              <p></p>
+              <h1></h1>
+              <span></span>
+              <p></p>
+            </figcaption>
+          </figure>
+        </li>
+      </ul>
+      <img src='https://images7.alphacoders.com/393/393815.jpg' style='position:fixed;top:0px;left:0px;width:100%;height:100%;z-index:-1;'>
+    </div>
+
+  </div>
 	<?php
 }
 
