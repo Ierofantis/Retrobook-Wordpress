@@ -138,11 +138,11 @@ function bavotasan_front_page_render() {
 
             <ul class='page'>
               <li></li>
-              <li>          
-                <a class="btn1 fancybox fancybox.iframe"  href="/social/register/">Signup</a> 
+              <li>      
+                <p>
+                <a class="btn3" href="/social/activity/">Enter</a>
+                </p>   
                 
-                <p><a class="btn3" href="/social/activity/">Enter</a></p>   
-                <p><a class="btn2 fancybox fancybox.iframe"  href="/social/login">Login</a>
                 </p>
               </li>
               <li></li>
@@ -195,7 +195,15 @@ function bavotasan_styles() {
 </style>
 	<?php
 }
+//hide admin bar for users
+add_action('after_setup_theme', 'remove_admin_bar');
 
+function remove_admin_bar() {
+if (!current_user_can('administrator') && !is_admin()) {
+  show_admin_bar(false);
+ }
+}
+// add_filter('show_admin_bar', '__return_false');
 add_action( 'wp_enqueue_scripts', 'bavotasan_add_js' );
 if ( ! function_exists( 'bavotasan_add_js' ) ) :
 /**
